@@ -1,0 +1,157 @@
+body {
+    font-family: 'Times New Roman';
+    background-image: url("bg3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: aliceblue;
+}
+
+.box {
+    box-shadow: inset 0 0 0 1000px rgba(76, 74, 74, 0.5);
+    height: 600px;
+    width: 1000px;
+    display: flex;
+    margin-top: 85px;
+    margin-left: 300px;
+    border-radius: 25px;
+    border: 2px solid #656663;
+}
+
+.text_in_box {
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: xx-large;
+}
+
+label {
+    text-align: center;
+}
+
+.name_box {
+    padding: 10px;
+}
+
+.email_box {
+    padding: 10px;
+}
+
+.modal {
+    font-size: x-large;
+}
+
+.resume {
+    font-size: x-large;
+}
+
+.enter_box {
+    /* Target the box containing the input and button */
+    padding: 10px;
+    /* Add padding */
+    margin-bottom: 20px;
+    /* Add spacing below */
+}
+
+.enter_box button[type="submit"] {
+    /* Target the "Submit" button within the box */
+    background-color: #4CAF50;
+    /* Green background color */
+    color: white;
+    /* White text color */
+    border: none;
+    /* Remove default border */
+    padding: 10px 20px;
+    /* Adjust padding */
+    font-size: 16px;
+    /* Increase font size */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+    margin-top: 20px;
+}
+
+.enter_box button[type="submit"]:hover {
+    background-color: rgb(44, 121, 44)
+}
+
+.text_box {
+    flex-direction: column;
+    align-items: center;
+    margin: 100px auto;
+    padding: 10px;
+    font-weight: bolder;
+}
+
+#results-button {
+    background-color: rgb(50, 205, 42);
+    color: rgb(250, 243, 243);
+    /* Change text color as desired*/
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 200px;
+    font-size: 18px;
+}
+
+#results-button:hover {
+    background-color: #23a132;
+}
+
+input::file-selector-button {
+    background-image: linear-gradient(to right,
+            #ff7a18,
+            #af002d,
+            #315397 100%,
+            #723bba 200%);
+    background-position-x: 0%;
+    background-size: 200%;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    padding: 1rem 1.25rem;
+    text-shadow: 0 1px 1px #333;
+    transition: all 0.25s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input::file-selector-button:hover {
+    background-position-x: 100%;
+    transform: scale();
+    border-radius: 8px;
+}
+  
+#upload {
+    font-size: 16px;
+    background-image: linear-gradient(to right,
+            #cdff18,
+            #00af4f,
+            #3952df 100%,
+            #852fd0 200%);
+    background-position-x: 0%;
+    background-size: 200%;
+    border: 0;
+    border-radius: 8px;
+    color: #fff;
+    padding: 1rem 1.25rem;
+    text-shadow: 0 1px 1px #333;
+    transition: all 0.25s;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#upload:hover {
+    background-position-x: 100%;
+    transform: scale();
+    border-radius: 8px;
+}
