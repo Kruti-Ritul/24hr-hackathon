@@ -18,7 +18,7 @@ def upload():
                 # ... your logic here ...
                 file.save(secure_filename(file.filename))  # Example: saving files
             flash("Files uploaded successfully!", "success")
-            return redirect(url_for('home'))  # Redirect back to home
+            return redirect(url_for('index'))  # Redirect back to home
         else:
             flash("No files selected!", "danger")
             return redirect(url_for('home'))  # Redirect back to home
@@ -27,7 +27,7 @@ def upload():
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 if __name__ == "__main__":
   app.run(debug=True)  # Run the app in debug mode

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HR AI Resume Screening</title>
+    <link rel="website icon" type="png" href="/static/logo5.png">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script src="https://kit.fontawesome.com/a2806b961a.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@toastifyjs/toast@latest/dist/toastify.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="text_in_box">
+            <h1>HR AI Resume Screening</h1>
+            <p>
+            <div id="id01" class="modal">
+            </div>
+            </p>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+                <label for="files">Select PDF files to screen:</label>
+                <p></p>
+                <div class="upload_btn">
+                    <input type="file" id="files" name="files" accept=".pdf" multiple
+                        onchange="showSelectedFiles(this)">
+                    <button type="submit" id="upload">Upload Files</button>
+                    <ul id="selected-files"></ul>
+                </div>
+            </form>
+
+            <div id="toast-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Function to display selected files
+        function showSelectedFiles(input) {
+            const selectedFiles = input.files;
+            const fileList = document.getElementById('selected-files');
+            fileList.innerHTML = ''; // Clear previous selections
+
+            if (selectedFiles.length > 0) {
+                for (const file of selectedFiles) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = file.name;
+                    fileList.appendChild(listItem);
+                }
+            } else {
+                fileList.textContent = 'No files selected.';
+                showToast('Please select files to upload.', 'info'); // Toast for no selection
+            }
+        }
+
+        // Function to display toast notification
+        function showToast(message, type) {
+            const toast = Toastify({
+                text: message,
+                duration: 3000,
+                closeOnClick: true,
+                position: "top-center",
+                backgroundColor: type === 'success' ? '#008000' : '#ff9900', // Green for success, orange for info
+            });
+            toast.showToast();
+        }
+
+        // Handle form submission (you can modify this based on your Flask logic)
+        document.getElementById('upload-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = this;
+            const formData = new FormData(form);
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        for (const file of formData.getAll('files')) {
+                            showToast(`File uploaded: ${file.name}`, 'success');
+                        }
+                    } else {
+                        console.error('Upload failed:', data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Upload error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
